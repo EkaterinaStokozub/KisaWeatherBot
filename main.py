@@ -31,7 +31,8 @@ wind_dir = {'nw': 'северо-западное', 'n': 'северное', 'ne'
 
 def req(lat,lon):
       url_yandex = f'https://api.weather.yandex.ru/v2/forecast/?lat={lat}&lon={lon}&[lang=ru_RU]'
-      token_yandex = 'e935f5fe-68ba-4040-acc0-1490d5ffead6'
+      with open("yandex.txt") as s:
+          token_yandex = s.read().strip()
       yandex_req = requests.get(url=url_yandex, headers={'X-Yandex-API-Key': token_yandex})
       data=json.loads(yandex_req.text)
       return data
